@@ -4,6 +4,9 @@ const GlobalStyles = createGlobalStyle`
 
 *{
 boz-sizing: border-box;
+margin: 0;
+padding: 0;
+transition: 300ms;
 }
 
 body{

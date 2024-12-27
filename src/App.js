@@ -1,19 +1,20 @@
 import Body from "./components/Body";
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "./components/Global";
+import GlobalStyles from "./components/styles/Global.styled";
 
-import "./App.css";
+import "./index.css";
 
 const theme = {
   color: {
-    lime: "hsl(61, 70%, 52%)",
-    red: "hsl(4, 69%, 50%)",
-    slate100: "hsl(202, 86%, 94%)",
-    slate300: "hsl(203, 41%, 72%)",
-    slate500: "hsl(200, 26%, 54%)",
-    slate700: "hsl(200, 24%, 40%)",
-    slate900: "hsl(202, 55%, 16%)",
-    slate1000: "hsl(202, 55%, 10%)",
+    moderateBlue: "hsl(238, 40%, 52%)",
+    softRed: "hsl(358, 79%, 66%)",
+    lightGrayishBlue: "hsl(239, 57%, 85%)",
+    paleRed: " hsl(357, 100%, 86%)",
+    darkBlue: "hsl(212, 24%, 26%)",
+    grayishBlue: "hsl(211, 10%, 45%)",
+    lightGray: "hsl(223, 19%, 93%)",
+    VerylightGray: "hsl(228, 33%, 97%)",
+    white: "hsl(0, 0%, 100%)",
   },
   mobile: 450,
 };
