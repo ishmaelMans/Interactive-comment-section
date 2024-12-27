@@ -20,7 +20,7 @@ const CommentSection = styled.section`
   align-items: flex-start;
   min-height: 100px;
   padding: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   min-height: 50px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px;
@@ -34,19 +34,33 @@ const SubCommentContainer = styled.section`
   min-height: 100px;
   width: 80%;
   padding: 20px;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   min-height: 50px;
   background-color: ${({ theme }) => theme.color.white};
   border-radius: 8px;
   overflow: hidden;
-  }
 `;
+
 const SubComment = styled.section`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   flex-direction: column;
+  position: relative;
+  margin-bottom: 10px;
   width: 100%;
+
+  &:nth-child(odd) {
+    margin-bottom: 15px;
+  }
+
+  &::before {
+    content: "";
+    left: 30px;
+    position: absolute;
+    background-color: yellow;
+    border-left: 1px solid ${({ theme }) => theme.color.lightGrayishBlue};
+    height: 100%;
   }
 `;
 
@@ -247,12 +261,65 @@ const Response = styled.div`
     }
   }
 `;
+
+const LastResponse = styled.div`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 20px 0;
+  width: 100%;
+  min-height: 70px;
+  background-color: ${({ theme }) => theme.color.white};
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+  textarea {
+    font-family: "Rubik";
+    width: 70%;
+    min-height: 50px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-right: 15px;
+    outline: none;
+
+    &::selection {
+      background-color: yellow;
+    }
+
+    &:focus {
+      border: 1px solid ${({ theme }) => theme.color.moderateBlue};
+    }
+  }
+
+  button {
+    padding: 10px;
+    margin-right: 20px;
+    width: 90px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    background-color: ${({ theme }) => theme.color.moderateBlue};
+    color: ${({ theme }) => theme.color.white};
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
 const SubResponse = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: row;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-top: 15px;
   padding: 20px 0;
   width: 85.5%;
   min-height: 70px;
@@ -299,6 +366,57 @@ const SubResponse = styled.div`
   }
 `;
 
+const ConfirmDelete = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  div {
+    width: 270px;
+    height: 150px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+
+    h3 {
+      margin-bottom: 15px;
+      font-weight: 500;
+      color: ${({ theme }) => theme.color.darkBlue};
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      color: ${({ theme }) => theme.color.grayishBlue};
+    }
+    span {
+      font-size: 14px;
+      background-color: grey;
+      padding: 10px 23px;
+      border-radius: 5px;
+      color: #fff;
+      background-color: ${({ theme }) => theme.color.softRed};
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:first-of-type {
+        margin-right: 10px;
+        background-color: ${({ theme }) => theme.color.grayishBlue};
+      }
+    }
+  }
+`;
+
 export {
   Main,
   Container,
@@ -316,5 +434,7 @@ export {
   SubCommentContainer,
   TextArea,
   Response,
+  LastResponse,
   ReplyRight,
+  ConfirmDelete,
 };

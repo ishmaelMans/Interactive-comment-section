@@ -15,14 +15,18 @@ import {
   SubCommentContainer,
   TextArea,
   Response,
+  LastResponse,
   ReplyRight,
+  ConfirmDelete,
 } from "./styles/Body.styled";
+
 import data from "../data.json";
 import { useState } from "react";
 import React from "react";
 
 const Body = () => {
   const [comments, setComments] = useState(data.comments);
+  const [isDelete, setIsDelete] = useState(false);
   const [subComments, setSubComments] = useState(data.comments[1].replies);
   const [currentUser, setCurrentUser] = useState(data.currentUser);
   const [activeCommentId, setActiveCommentId] = useState(null);
@@ -61,6 +65,10 @@ const Body = () => {
           : comment
       )
     );
+  };
+
+  const handleDelete = () => {
+    setIsDelete(true);
   };
 
   return (
@@ -199,7 +207,7 @@ const Body = () => {
                       )}
                       {comment.user.username === "juliusomo" ? (
                         <EditButton>
-                          <DeleteButton>
+                          <DeleteButton onClick={handleDelete}>
                             <svg
                               width="12"
                               height="14"
@@ -246,11 +254,26 @@ const Body = () => {
             </React.Fragment>
           );
         })}
-        <Response>
+        <LastResponse>
           <img src={currentUser.image.png} alt="" />
           <textarea name="response" id="response"></textarea>
           <button>Reply</button>
-        </Response>
+        </LastResponse>
+        {isDelete ? (
+          <ConfirmDelete>
+            <div>
+              <h3>Delete Comment</h3>
+              <p>
+                Are you sure you want to delete this comment? This will remove
+                the comment and can't be undone.
+              </p>
+              <span onClick={() => setIsDelete(false)}>N0, CANCEL</span>
+              <span>YES, DELETE</span>
+            </div>
+          </ConfirmDelete>
+        ) : (
+          ""
+        )}
       </Container>
     </Main>
   );
