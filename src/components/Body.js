@@ -180,7 +180,7 @@ const Body = () => {
                           alt="Mansaray Ishmael"
                         />
                         <span>{comment.user.username}</span>
-                        {comment.user.username === "juliusomo" ? (
+                        {comment.user.username === "mansaray" ? (
                           <h4>you</h4>
                         ) : (
                           ""
@@ -188,7 +188,7 @@ const Body = () => {
 
                         <p>{comment.createdAt}</p>
                       </Profile>
-                      {comment.user.username !== "juliusomo" ? (
+                      {comment.user.username !== "mansaray" ? (
                         <ReplyRight onClick={() => handleReply(comment.id)}>
                           <svg
                             width="14"
@@ -205,7 +205,7 @@ const Body = () => {
                       ) : (
                         ""
                       )}
-                      {comment.user.username === "juliusomo" ? (
+                      {comment.user.username === "mansaray" ? (
                         <EditButton>
                           <DeleteButton onClick={handleDelete}>
                             <svg
@@ -256,7 +256,11 @@ const Body = () => {
         })}
         <LastResponse>
           <img src={currentUser.image.png} alt="" />
-          <textarea name="response" id="response"></textarea>
+          <textarea
+            name="response"
+            id="response"
+            placeholder="Add a Comment..."
+          ></textarea>
           <button>Reply</button>
         </LastResponse>
         {isDelete ? (
